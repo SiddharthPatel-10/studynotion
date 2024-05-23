@@ -11,77 +11,78 @@ require("dotenv").config();
 //Signup Controller for Registering User's
 exports.signup = async (req, res) => {
   try {
-    // destructure fields from request body
+    // Destructure fields from the request body
     const {
       firstName,
       lastName,
       email,
       password,
       confirmPassword,
-      contactNumber,
       accountType,
+      contactNumber,
       otp,
     } = req.body;
-
-    //check if all fields are their or not
+    // Check if All Details are there or not
     if (
       !firstName ||
       !lastName ||
+      !email ||
       !password ||
       !confirmPassword ||
-      !email ||
       !otp
     ) {
       return res.status(403).send({
         success: false,
-        message: "All the fields are required",
+        message: "All Fields are required",
       });
     }
-    // check if passowrd and confirmPassword are same or not
-    if (password != confirmPassword) {
+    // Check if password and confirm password match
+    if (password !== confirmPassword) {
       return res.status(400).json({
         success: false,
         message:
-          "Password and confirm Password does not match. please try again.",
+          "Password and Confirm Password do not match. Please try again.",
       });
     }
-    //check User already exist or not
+
+    // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({
         success: false,
-        message: "User already exist. please sign in to continue.",
+        message: "User already exists. Please sign in to continue.",
       });
     }
-    //Find most recent otp for the email
-    const response = await OTP.findOne({ email })
-      .sort({ createdAt: -1 })
-      .limit(1);
+
+    // Find the most recent OTP for the email
+    const response = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1);
     console.log(response);
     if (response.length === 0) {
-      //otp is not found for this email
+      // OTP not found for the email
       return res.status(400).json({
         success: false,
         message: "The OTP is not valid",
       });
     } else if (otp !== response[0].otp) {
+      // Invalid OTP
       return res.status(400).json({
         success: false,
-        message: " The OTP is not valid",
+        message: "The OTP is not valid",
       });
     }
 
-    //hash the password
+    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-    //create the User
+
+    // Create the user
     let approved = "";
     approved === "Instructor" ? (approved = false) : (approved = true);
 
-    //create additional details for the user
+    // Create the Additional Profile For User
     const profileDetails = await Profile.create({
       gender: null,
-      about: null,
       dateOfBirth: null,
+      about: null,
       contactNumber: null,
     });
     const user = await User.create({
@@ -105,7 +106,7 @@ exports.signup = async (req, res) => {
     console.error(error);
     return res.status(500).json({
       success: false,
-      message: "User cannot be registered. please try again.",
+      message: "User cannot be registered. Please try again.",
     });
   }
 };
