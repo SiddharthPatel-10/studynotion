@@ -1,2 +1,2 @@
-Coursify
+# Coursify
 Author: Siddharth Patel
