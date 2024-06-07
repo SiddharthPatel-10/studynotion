@@ -1,13 +1,13 @@
-import { RiEditBoxLine } from "react-icons/ri"
-import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { RiEditBoxLine } from "react-icons/ri";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import { formattedDate } from "../../../utils/dateFormatter"
-import IconBtn from "../../common/IconBtn"
+import { formattedDate } from "../../../utils/dateFormatter";
+import IconBtn from "../../common/IconBtn";
 
 export default function MyProfile() {
-  const { user } = useSelector((state) => state.profile)
-  const navigate = useNavigate()
+  const { user } = useSelector((state) => state.profile);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function MyProfile() {
         <IconBtn
           text="Edit"
           onclick={() => {
-            navigate("/dashboard/settings")
+            navigate("/dashboard/settings");
           }}
         >
           <RiEditBoxLine />
@@ -43,7 +43,7 @@ export default function MyProfile() {
           <IconBtn
             text="Edit"
             onclick={() => {
-              navigate("/dashboard/settings")
+              navigate("/dashboard/settings");
             }}
           >
             <RiEditBoxLine />
@@ -67,7 +67,7 @@ export default function MyProfile() {
           <IconBtn
             text="Edit"
             onclick={() => {
-              navigate("/dashboard/settings")
+              navigate("/dashboard/settings");
             }}
           >
             <RiEditBoxLine />
@@ -118,5 +118,5 @@ export default function MyProfile() {
         </div>
       </div>
     </>
-  )
+  );
 }
