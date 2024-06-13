@@ -12,7 +12,7 @@ exports.createCategory = async (req, res) => {
 			name: name,
 			description: description,
 		});
-		console.log(CategorysDetails);
+		console.log("Category created: ",CategorysDetails);
 		return res.status(200).json({
 			success: true,
 			message: "Categorys Created Successfully",
@@ -42,7 +42,6 @@ exports.showAllCategories = async (req, res) => {
 };
 
 //categoryPageDetails 
-
 exports.categoryPageDetails = async (req, res) => {
     try {
             //get categoryId
@@ -65,8 +64,7 @@ exports.categoryPageDetails = async (req, res) => {
                                          .populate("courses")
                                          .exec();
 
-            //get top 10 selling courses
-            //HW - write it on your own
+          
 
             //return response
             return res.status(200).json({

@@ -1,4 +1,3 @@
-// Import necessary modules
 const Section = require("../models/Section");
 const SubSection = require("../models/Subsection");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");

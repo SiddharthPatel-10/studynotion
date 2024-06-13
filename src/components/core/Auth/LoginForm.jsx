@@ -13,7 +13,7 @@ function LoginForm() {
     password: "",
   })
 
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
 
   const { email, password } = formData
 
