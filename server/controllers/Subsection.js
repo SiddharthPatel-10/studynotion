@@ -1,5 +1,5 @@
 const Section = require("../models/Section");
-const SubSection = require("../models/Subsection");
+const SubSection = require("../models/SubSection");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 
 // Create a new sub-section for a given section
@@ -76,8 +76,11 @@ exports.updateSubSection = async (req, res) => {
         video,
         process.env.FOLDER_NAME
       );
+      //updates the videoUrl property of the subSection document.the sub-section's document in the database will now reference the new video URL.
       subSection.videoUrl = uploadDetails.secure_url;
-      subSection.timeDuration = `${uploadDetails.duration}`;
+
+      //updates the timeDuration property of the subSection document. the sub-section's document in the database will now have the correct duration for the new video.
+      subSection.timeDuration = `${uploadDetails.duration}`;     
     }
 
     await subSection.save();
