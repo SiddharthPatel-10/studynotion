@@ -172,9 +172,7 @@ const Footer = () => {
             })}
           </div>
 
-          <div className="text-center">
-            Made with ❤️ Coursify © 2024 Studynotion
-          </div>
+          <div className="text-center">Made with ❤️ Coursify © 2024 Coursify</div>
         </div>
       </div>
     </div>

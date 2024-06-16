@@ -36,4 +36,3 @@ export default function SidebarLink({ link, iconName }) {
     </NavLink>
   )
 }
-

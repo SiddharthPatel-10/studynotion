@@ -12,10 +12,10 @@ import {
 } from "../../../../../services/operations/courseDetailsAPI"
 import { setCourse, setStep } from "../../../../../slices/courseSlice"
 import { COURSE_STATUS } from "../../../../../utils/constants"
-import IconBtn from "../../../../common/IconBtn"
-// import Upload from "../Upload"
+import IconBtn from "../../../../Common/IconBtn"
+import Upload from "../Upload"
 import ChipInput from "./ChipInput"
-import RequirementsField from "./RequirementField"
+import RequirementsField from "./RequirementsField"
 
 export default function CourseInformationForm() {
   const {
@@ -258,14 +258,14 @@ export default function CourseInformationForm() {
         getValues={getValues}
       />
       {/* Course Thumbnail Image */}
-      {/* <Upload
+      <Upload
         name="courseImage"
         label="Course Thumbnail"
         register={register}
         setValue={setValue}
         errors={errors}
         editData={editCourse ? course?.thumbnail : null}
-      /> */}
+      />
       {/* Benefits of the course */}
       <div className="flex flex-col space-y-2">
         <label className="text-sm text-richblack-5" htmlFor="courseBenefits">
